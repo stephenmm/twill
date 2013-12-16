@@ -62,7 +62,7 @@ def print_form(n, f, OUT):
         print>>OUT, '\nForm #%d' % (n + 1,)
 
     if f.controls:
-        print>>OUT, "## ## __Name__________________ __Type___ __ID________ __Value__________________"
+        print>>OUT, "## ## __Type___ __ID________ __Name__________________ __Value__________________"
 
 
     submit_indices = {}
@@ -88,10 +88,10 @@ def print_form(n, f, OUT):
             submit_index = "  "
         strings = ("%-2s" % (n + 1,),
                    submit_index,
-                   "%-24s %-9s" % (trunc(str(field.name), 24),
-                                   trunc(field.type, 9)),
+                   "%-9s" % ( trunc(field.type, 9) ),
                    "%-12s" % (trunc(field.id or "(None)", 12),),
-                   trunc(value_displayed, 40),
+                   "%-24s" % ( str(field.name) ),
+                   value_displayed,
                    )
         for s in strings:
             print>>OUT, s,
